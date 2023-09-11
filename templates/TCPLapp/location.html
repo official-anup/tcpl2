@@ -1,0 +1,42 @@
+search area by latlong :-https://youtu.be/5S-f_OWy5Qs
+https://youtu.be/e3ssSiQq9iM  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello, world!</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+  <link rel="icon" href="favicon.png">
+  {% comment %} <scripts src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></scripts>
+  <scripts type="text/javascripts" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBY5p5e5PtJuJLI_nRpjefL0S094jdhEP8&lib"><script> {% endcomment %}
+
+</head>
+<body>
+  <input type="text" id="location">
+  <input type="text" placeholder="Latitude" id="lat">
+  <input type="text" placeholder="Longitude" id="long">
+  
+
+  <script type="text/javascript">
+    $(document.ready(function(){
+        var autocomplete;
+        var id='location';
+        autocomplete=new google.maps.places.Autocomplete((document.getElementById(id)),{
+            types:['geocode'],
+        })
+
+        google.maps.event.addlistner(autocomplete,'places_changed',function(){
+
+
+            var place=autocomplete.getPlace();
+            jQuery("#lat").val(place.geometry.location.lat());
+            jQuery("#long  ").val(place.geometry.location.lng ());   
+
+        })
+
+
+
+
+    }))
+</html>
